@@ -1,0 +1,438 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BLK_ALIGN	mem_queue.h	/^	BLK_ALIGN	= 1, $/;"	e	enum:MEM_BLOCK_TYPE
+BLK_CLOSE	mem_queue.h	/^	BLK_CLOSE	= 2,$/;"	e	enum:MEM_BLOCK_TYPE
+BLK_DATA	mem_queue.h	/^	BLK_DATA	= 0,$/;"	e	enum:MEM_BLOCK_TYPE
+BLK_OPEN	mem_queue.h	/^	BLK_OPEN	= 3,$/;"	e	enum:MEM_BLOCK_TYPE
+CACHE_CLOSE	net_util.h	/^	CACHE_CLOSE = 2$/;"	e	enum:CACHE_TYPE
+CACHE_READ	net_util.h	/^	CACHE_READ = 1, 	$/;"	e	enum:CACHE_TYPE
+CACHE_TYPE	net_util.h	/^enum CACHE_TYPE {$/;"	g
+CFLAGS	Makefile	/^CFLAGS =  -g -Wall -Wunused-function -rdynamic -lpthread -ldl -L\/usr\/local\/lib -lnanc$/;"	m
+CONST_DEF	global.h	/^enum CONST_DEF {$/;"	g
+DLFUNC	outer.c	36;"	d	file:
+DLFUNC_NO_ERROR	outer.c	30;"	d	file:
+ERROR	global.h	/^	ERROR = -1 $/;"	e	enum:RTYPE
+FDS_H_	fds.h	2;"	d
+GLOBAL_H_	global.h	2;"	d
+INSTALL_DIR	Makefile	/^INSTALL_DIR = \/usr\/local\/include\/meserv$/;"	m
+LIBS	Makefile	/^LIBS = `pkg-config --cflags --libs glib-2.0`$/;"	m
+MASTER_H_	master.h	2;"	d
+MAX_WORKS	global.h	/^	MAX_WORKS = 1024,  \/\/最大工作进程数$/;"	e	enum:CONST_DEF
+MCAST_MSG_LEN	global.h	/^	MCAST_MSG_LEN = 4096, $/;"	e	enum:CONST_DEF
+MEM_BLOCK_TYPE	mem_queue.h	/^enum MEM_BLOCK_TYPE {$/;"	g
+MEM_QUEUE_H_	mem_queue.h	2;"	d
+MEM_TYPE	mem_queue.h	/^enum MEM_TYPE {$/;"	g
+MEM_TYPE_RECV	mem_queue.h	/^	MEM_TYPE_RECV = 0,  \/\/接收队列$/;"	e	enum:MEM_TYPE
+MEM_TYPE_SEND	mem_queue.h	/^	MEM_TYPE_SEND = 1	\/\/发送队列$/;"	e	enum:MEM_TYPE
+OBJS	Makefile	/^OBJS = $(patsubst %.c, %.o, $(SRCS))$/;"	m
+OUTER_FUNC	test_meserv/test_serv.cpp	37;"	d	file:
+OUTER_FUNC	test_meserv/test_serv.cpp	39;"	d	file:
+OUT_H_	outer.h	2;"	d
+PIPE_MSG_LEN	global.h	/^	PIPE_MSG_LEN = 10240 \/\/管道消息长度$/;"	e	enum:CONST_DEF
+RTYPE	global.h	/^enum RTYPE {$/;"	g
+SERV_MASTER	net_util.h	/^	SERV_MASTER = 0, $/;"	e	enum:SERV_TYPE
+SERV_TYPE	net_util.h	/^enum SERV_TYPE {$/;"	g
+SERV_WORK	net_util.h	/^	SERV_WORK = 0$/;"	e	enum:SERV_TYPE
+SRCS	Makefile	/^SRCS = $(wildcard *.c)$/;"	m
+SUCCESS	global.h	/^	SUCCESS = 0,$/;"	e	enum:RTYPE
+ServInterface	outer.h	/^	typedef struct ServInterface {$/;"	s
+ServInterface::data_handle	outer.h	/^		void*   data_handle;  \/\/数据段打开so$/;"	m	struct:ServInterface	access:public
+ServInterface::get_msg_len	outer.h	/^		int		(*get_msg_len)(int fd, const void *data, int len, int ismaster);$/;"	m	struct:ServInterface	access:public
+ServInterface::handle	outer.h	/^		void*   handle;		  \/\/代码段打开so $/;"	m	struct:ServInterface	access:public
+ServInterface::handle_timer	outer.h	/^		void	(*handle_timer)(); $/;"	m	struct:ServInterface	access:public
+ServInterface::on_cli_closed	outer.h	/^		void	(*on_cli_closed)(int fd);$/;"	m	struct:ServInterface	access:public
+ServInterface::on_serv_closed	outer.h	/^		void	(*on_serv_closed)(int fd);$/;"	m	struct:ServInterface	access:public
+ServInterface::proc_cli_msg	outer.h	/^		int		(*proc_cli_msg)(void* msg, int len, int fd);$/;"	m	struct:ServInterface	access:public
+ServInterface::proc_serv_msg	outer.h	/^		void	(*proc_serv_msg)(int fd, void* msg, int len);$/;"	m	struct:ServInterface	access:public
+ServInterface::serv_fini	outer.h	/^		int 	(*serv_fini)(int ismaster);$/;"	m	struct:ServInterface	access:public
+ServInterface::serv_init	outer.h	/^		int 	(*serv_init)(int ismaster);$/;"	m	struct:ServInterface	access:public
+UTIL_H_	util.h	2;"	d
+WORK_H_	work.h	2;"	d
+_NET_UTIL_H	net_util.h	2;"	d
+a	test_meserv/data.cpp	/^int a;$/;"	v
+add_fd_to_epinfo	net_util.c	/^int add_fd_to_epinfo(int epfd, int fd, int events)$/;"	f	signature:(int epfd, int fd, int events)
+add_fd_to_epinfo	net_util.h	/^int add_fd_to_epinfo(int epfd, int fd, int events);$/;"	p	signature:(int epfd, int fd, int events)
+add_fdinfo_to_epinfo	net_util.c	/^int add_fdinfo_to_epinfo(int fd, int idx, int type, int ip, uint16_t port)$/;"	f	signature:(int fd, int idx, int type, int ip, uint16_t port)
+add_fdinfo_to_epinfo	net_util.h	/^int add_fdinfo_to_epinfo(int fd, int idx, int type, int ip, uint16_t port);$/;"	p	signature:(int fd, int idx, int type, int ip, uint16_t port)
+add_pfd_to_epinfo	net_util.c	/^int add_pfd_to_epinfo(int epfd, void *pfd, int events)$/;"	f	signature:(int epfd, void *pfd, int events)
+add_pfd_to_epinfo	net_util.h	/^int add_pfd_to_epinfo(int epfd, void *pfd, int events);$/;"	p	signature:(int epfd, void *pfd, int events)
+addr	net_util.h	/^	fd_addr_t addr; \/\/地址信息$/;"	m	struct:fd_wrap	access:public
+argv_end	global.c	/^char *argv_end;$/;"	v
+argv_end	global.h	/^extern char *argv_end;$/;"	x
+argv_end	util.h	/^extern char *argv_end;$/;"	x
+argv_start	global.c	/^char *argv_start;$/;"	v
+argv_start	global.h	/^extern char *argv_start;$/;"	x
+argv_start	util.h	/^extern char *argv_start;$/;"	x
+b	test_meserv/data.cpp	/^int b;$/;"	v
+bind_ip	net_util.h	/^	char bind_ip[17];	\/\/ip$/;"	m	struct:svr_setting	access:public
+bind_port	net_util.h	/^	uint16_t bind_port; \/\/port$/;"	m	struct:svr_setting	access:public
+blk_cnt	mem_queue.h	/^	volatile int blk_cnt;	\/\/总共块数  正确$/;"	m	struct:mem_head	access:public
+blk_head	mem_queue.c	/^mem_block_t* blk_head(mem_queue_t *q)$/;"	f	signature:(mem_queue_t *q)
+blk_head	mem_queue.h	/^inline mem_block_t* blk_head(mem_queue_t *q);$/;"	p	signature:(mem_queue_t *q)
+blk_head_len	mem_queue.c	/^const int blk_head_len = sizeof(mem_block_t);$/;"	v
+blk_head_len	mem_queue.h	/^extern const int blk_head_len;$/;"	x
+blk_tail	mem_queue.c	/^mem_block_t* blk_tail(mem_queue_t *q)$/;"	f	signature:(mem_queue_t *q)
+blk_tail	mem_queue.h	/^inline mem_block_t* blk_tail(mem_queue_t *q);$/;"	p	signature:(mem_queue_t *q)
+buff	net_util.h	/^	fd_buff_t buff; \/\/缓存$/;"	m	struct:fd_wrap	access:public
+chg_proc_title	util.c	/^int chg_proc_title(const char *fmt, ...) $/;"	f	signature:(const char *fmt, ...)
+chg_proc_title	util.h	/^int chg_proc_title(const char *fmt, ...);$/;"	p	signature:(const char *fmt, ...)
+chl_pids	global.c	/^int chl_pids[1024] = {0};$/;"	v
+chl_pids	global.h	/^extern int chl_pids[MAX_WORKS];$/;"	x
+close_cli	work.c	/^void close_cli(int fd)$/;"	f	signature:(int fd)
+close_cli	work.h	/^void close_cli(int fd);$/;"	p	signature:(int fd)
+closelist	net_util.h	/^	list_head_t closelist;  \/\/待关闭链表$/;"	m	struct:epoll_info	access:public
+connect_to_serv	net_util.c	/^int connect_to_serv(char *ip, int port, int bufsize, int timeout)$/;"	f	signature:(char *ip, int port, int bufsize, int timeout)
+connect_to_serv	net_util.h	/^int connect_to_serv(char *ip, int port, int bufsize, int timeout);$/;"	p	signature:(char *ip, int port, int bufsize, int timeout)
+count	net_util.h	/^	uint32_t count;$/;"	m	struct:epoll_info	access:public
+data	mem_queue.h	/^	char data[];			\/\/数据$/;"	m	struct:mem_block	access:public
+data_handle	outer.h	/^		void*   data_handle;  \/\/数据段打开so$/;"	m	struct:ServInterface	access:public
+data_so	net_util.h	/^	char data_so[32];	\/\/data_so;$/;"	m	struct:svr_setting	access:public
+do_add_to_closelist	net_util.c	/^void do_add_to_closelist(int fd) $/;"	f	signature:(int fd)
+do_add_to_closelist	net_util.h	/^void do_add_to_closelist(int fd);$/;"	p	signature:(int fd)
+do_add_to_readlist	net_util.c	/^void do_add_to_readlist(int fd) $/;"	f	signature:(int fd)
+do_add_to_readlist	net_util.h	/^void do_add_to_readlist(int fd);$/;"	p	signature:(int fd)
+do_blk_close	work.c	/^int do_blk_close(mem_block_t *blk)$/;"	f	signature:(mem_block_t *blk)
+do_blk_close	work.h	/^int do_blk_close(mem_block_t *blk);$/;"	p	signature:(mem_block_t *blk)
+do_blk_msg	work.c	/^int do_blk_msg(mem_block_t *blk)$/;"	f	signature:(mem_block_t *blk)
+do_blk_msg	work.h	/^int do_blk_msg(mem_block_t *blk);$/;"	p	signature:(mem_block_t *blk)
+do_blk_open	work.c	/^int do_blk_open(mem_block_t *blk)$/;"	f	signature:(mem_block_t *blk)
+do_blk_open	work.h	/^int do_blk_open(mem_block_t *blk);$/;"	p	signature:(mem_block_t *blk)
+do_blk_send	master.c	/^int do_blk_send(mem_block_t *blk)$/;"	f	signature:(mem_block_t *blk)
+do_blk_send	master.h	/^int do_blk_send(struct mem_block *blk);$/;"	p	signature:(struct mem_block *blk)
+do_del_from_closelist	net_util.c	/^void do_del_from_closelist(int fd)$/;"	f	signature:(int fd)
+do_del_from_closelist	net_util.h	/^void do_del_from_closelist(int fd);$/;"	p	signature:(int fd)
+do_del_from_readlist	net_util.c	/^void do_del_from_readlist(int fd)$/;"	f	signature:(int fd)
+do_del_from_readlist	net_util.h	/^void do_del_from_readlist(int fd);$/;"	p	signature:(int fd)
+do_fd_close	net_util.c	/^int do_fd_close(int fd, int ismaster)$/;"	f	signature:(int fd, int ismaster)
+do_fd_close	net_util.h	/^int do_fd_close(int fd, int ismaster);$/;"	p	signature:(int fd, int ismaster)
+do_fd_open	master.c	/^int do_fd_open(int fd) $/;"	f	signature:(int fd)
+do_fd_open	master.h	/^int do_fd_open(int fd);$/;"	p	signature:(int fd)
+do_fd_open	net_util.c	/^extern int do_fd_open(int fd);$/;"	p	file:	signature:(int fd)
+do_fd_send	net_util.c	/^int do_fd_send(int fd, void *data, int len)$/;"	f	signature:(int fd, void *data, int len)
+do_fd_send	net_util.h	/^int do_fd_send(int fd, void *data, int len);$/;"	p	signature:(int fd, void *data, int len)
+do_fd_write	net_util.c	/^int do_fd_write(int fd)$/;"	f	signature:(int fd)
+do_fd_write	net_util.h	/^int do_fd_write(int fd);$/;"	p	signature:(int fd)
+do_free_fdsess	fds.c	/^void do_free_fdsess(void *fdsess)$/;"	f	signature:(void *fdsess)
+do_proc_mcast	work.c	/^int do_proc_mcast(int fd)$/;"	f	signature:(int fd)
+do_proc_mcast	work.h	/^int do_proc_mcast(int fd);$/;"	p	signature:(int fd)
+do_proc_pipe	work.c	/^int do_proc_pipe(int fd) $/;"	f	signature:(int fd)
+do_proc_pipe	work.h	/^int do_proc_pipe(int fd);$/;"	p	signature:(int fd)
+do_proc_svr	net_util.c	/^extern int do_proc_svr(int fd);$/;"	p	file:	signature:(int fd)
+do_proc_svr	work.c	/^int do_proc_svr(int fd) $/;"	f	signature:(int fd)
+do_proc_svr	work.h	/^int do_proc_svr(int fd);$/;"	p	signature:(int fd)
+env_end	global.c	/^char *env_end;$/;"	v
+env_end	global.h	/^extern char *env_end;$/;"	x
+env_end	util.h	/^extern char *env_end;$/;"	x
+environ	util.h	/^extern char **environ;$/;"	x
+epfd	net_util.h	/^	int epfd;$/;"	m	struct:epoll_info	access:public
+epinfo	global.c	/^epoll_info_t epinfo;$/;"	v
+epinfo	global.h	/^extern struct epoll_info  epinfo;$/;"	x
+epoll_info	global.h	/^struct epoll_info;$/;"	x
+epoll_info	net_util.h	/^typedef struct epoll_info {$/;"	s
+epoll_info::closelist	net_util.h	/^	list_head_t closelist;  \/\/待关闭链表$/;"	m	struct:epoll_info	access:public
+epoll_info::count	net_util.h	/^	uint32_t count;$/;"	m	struct:epoll_info	access:public
+epoll_info::epfd	net_util.h	/^	int epfd;$/;"	m	struct:epoll_info	access:public
+epoll_info::evs	net_util.h	/^	struct epoll_event *evs;$/;"	m	struct:epoll_info	typeref:struct:epoll_info::epoll_event	access:public
+epoll_info::fds	net_util.h	/^	fd_wrap_t *fds;$/;"	m	struct:epoll_info	access:public
+epoll_info::maxev	net_util.h	/^	int maxev;$/;"	m	struct:epoll_info	access:public
+epoll_info::maxfd	net_util.h	/^	int maxfd;$/;"	m	struct:epoll_info	access:public
+epoll_info::msg_size	net_util.h	/^	uint32_t msg_size;		\/\/已收到消息个数$/;"	m	struct:epoll_info	access:public
+epoll_info::msgq	net_util.h	/^	msg_queue_t msgq;		\/\/读写消息队列$/;"	m	struct:epoll_info	access:public
+epoll_info::readlist	net_util.h	/^	list_head_t readlist;   \/\/待读取链表$/;"	m	struct:epoll_info	access:public
+epoll_info::seq	net_util.h	/^	uint32_t seq; $/;"	m	struct:epoll_info	access:public
+epoll_info_t	net_util.h	/^}__attribute__((packed)) epoll_info_t;$/;"	t	typeref:struct:epoll_info
+evs	net_util.h	/^	struct epoll_event *evs;$/;"	m	struct:epoll_info	typeref:struct:epoll_info::epoll_event	access:public
+fd	fds.h	/^	int fd;$/;"	m	struct:fdsess	access:public
+fd	mem_queue.h	/^	int fd;					\/\/fd$/;"	m	struct:mem_block	access:public
+fd	net_util.h	/^	int fd;$/;"	m	struct:fd_wrap	access:public
+fd_addr	net_util.h	/^typedef struct fd_addr {$/;"	s
+fd_addr::ip	net_util.h	/^	uint32_t ip;$/;"	m	struct:fd_addr	access:public
+fd_addr::port	net_util.h	/^	uint16_t port;$/;"	m	struct:fd_addr	access:public
+fd_addr_t	net_util.h	/^} __attribute__((packed)) fd_addr_t;$/;"	t	typeref:struct:fd_addr
+fd_buff	net_util.h	/^typedef struct fd_buff {$/;"	s
+fd_buff::msglen	net_util.h	/^	int msglen;			\/\/消息长度$/;"	m	struct:fd_buff	access:public
+fd_buff::rbf	net_util.h	/^	char *rbf;			\/\/接收缓冲区$/;"	m	struct:fd_buff	access:public
+fd_buff::rlen	net_util.h	/^	int rlen;		\/\/接收缓冲区长度$/;"	m	struct:fd_buff	access:public
+fd_buff::sbf	net_util.h	/^	char *sbf;			\/\/发送缓冲区$/;"	m	struct:fd_buff	access:public
+fd_buff::sbf_size	net_util.h	/^	int sbf_size;		\/\/大小$/;"	m	struct:fd_buff	access:public
+fd_buff::slen	net_util.h	/^	int slen;		\/\/发送缓冲长度$/;"	m	struct:fd_buff	access:public
+fd_buff_t	net_util.h	/^}__attribute__((packed)) fd_buff_t;$/;"	t	typeref:struct:fd_buff
+fd_type	net_util.h	/^enum fd_type {$/;"	g
+fd_type_cli	net_util.h	/^	fd_type_cli,  \/\/客户端fd$/;"	e	enum:fd_type
+fd_type_connect	net_util.h	/^	fd_type_connect,$/;"	e	enum:fd_type
+fd_type_listen	net_util.h	/^	fd_type_listen,$/;"	e	enum:fd_type
+fd_type_mcast	net_util.h	/^	fd_type_mcast, $/;"	e	enum:fd_type
+fd_type_null	net_util.h	/^	fd_type_null, \/\/空类型$/;"	e	enum:fd_type
+fd_type_pipe	net_util.h	/^	fd_type_pipe, $/;"	e	enum:fd_type
+fd_type_svr	net_util.h	/^	fd_type_svr,  \/\/服务端fd$/;"	e	enum:fd_type
+fd_wrap	net_util.h	/^typedef struct fd_wrap {$/;"	s
+fd_wrap::addr	net_util.h	/^	fd_addr_t addr; \/\/地址信息$/;"	m	struct:fd_wrap	access:public
+fd_wrap::buff	net_util.h	/^	fd_buff_t buff; \/\/缓存$/;"	m	struct:fd_wrap	access:public
+fd_wrap::fd	net_util.h	/^	int fd;$/;"	m	struct:fd_wrap	access:public
+fd_wrap::flag	net_util.h	/^	uint8_t flag; \/\/标志 CACHE_TYPE$/;"	m	struct:fd_wrap	access:public
+fd_wrap::idx	net_util.h	/^	int idx; \/\/epinfo->fds index$/;"	m	struct:fd_wrap	access:public
+fd_wrap::node	net_util.h	/^	list_head_t node;   \/\/在可读或者关闭链表的位置$/;"	m	struct:fd_wrap	access:public
+fd_wrap::type	net_util.h	/^	uint8_t type;$/;"	m	struct:fd_wrap	access:public
+fd_wrap_t	net_util.h	/^} __attribute__((packed)) fd_wrap_t;$/;"	t	typeref:struct:fd_wrap
+fds	global.c	/^GHashTable *fds;$/;"	v
+fds	global.h	/^extern GHashTable *fds;$/;"	x
+fds	net_util.h	/^	fd_wrap_t *fds;$/;"	m	struct:epoll_info	access:public
+fdsess	fds.h	/^typedef struct fdsess {$/;"	s
+fdsess	net_util.h	/^struct fdsess;$/;"	x
+fdsess::fd	fds.h	/^	int fd;$/;"	m	struct:fdsess	access:public
+fdsess::ip	fds.h	/^	int ip;$/;"	m	struct:fdsess	access:public
+fdsess::port	fds.h	/^	int port;$/;"	m	struct:fdsess	access:public
+fdsess_t	fds.h	/^} fdsess_t;$/;"	t	typeref:struct:fdsess
+flag	net_util.h	/^	uint8_t flag; \/\/标志 CACHE_TYPE$/;"	m	struct:fd_wrap	access:public
+free_args	util.c	/^void free_args() $/;"	f
+free_args	util.h	/^void free_args();$/;"	p	signature:()
+free_buff	net_util.c	/^void free_buff(fd_buff_t *buff)$/;"	f	signature:(fd_buff_t *buff)
+free_buff	net_util.h	/^void free_buff(fd_buff_t *buff);$/;"	p	signature:(fd_buff_t *buff)
+g_argc	global.c	/^int g_argc;$/;"	v
+g_argc	global.h	/^extern int g_argc;$/;"	x
+g_argc	util.h	/^extern int g_argc;$/;"	x
+g_argv	global.c	/^char **g_argv;$/;"	v
+g_argv	global.h	/^extern char **g_argv;$/;"	x
+g_argv	util.h	/^extern char **g_argv;$/;"	x
+get_fd	fds.c	/^fdsess_t *get_fd(int fd)$/;"	f	signature:(int fd)
+get_fd	fds.h	/^fdsess_t *get_fd(int fd);$/;"	p	signature:(int fd)
+get_msg_len	outer.h	/^		int		(*get_msg_len)(int fd, const void *data, int len, int ismaster);$/;"	m	struct:ServInterface	access:public
+get_msg_len	test_meserv/test_serv.cpp	/^OUTER_FUNC int	get_msg_len(int fd, const void *data, int len, int ismaster)$/;"	f	signature:(int fd, const void *data, int len, int ismaster)
+handle	outer.h	/^		void*   handle;		  \/\/代码段打开so $/;"	m	struct:ServInterface	access:public
+handle_cli	master.c	/^int handle_cli(int fd)$/;"	f	signature:(int fd)
+handle_cli	master.h	/^int handle_cli(int fd);$/;"	p	signature:(int fd)
+handle_cli	net_util.c	/^extern int handle_cli(int fd);$/;"	p	file:	signature:(int fd)
+handle_closelist	net_util.c	/^int handle_closelist(int ismaster)$/;"	f	signature:(int ismaster)
+handle_closelist	net_util.h	/^int handle_closelist(int ismaster);$/;"	p	signature:(int ismaster)
+handle_epipe	master.c	/^void  handle_epipe(int signo)$/;"	f	signature:(int signo)
+handle_hup	master.c	/^void handle_hup(int fd)$/;"	f	signature:(int fd)
+handle_hup	master.h	/^void handle_hup(int fd);$/;"	p	signature:(int fd)
+handle_mq_recv	work.c	/^int handle_mq_recv(int i)$/;"	f	signature:(int i)
+handle_mq_recv	work.h	/^int handle_mq_recv();$/;"	p	signature:()
+handle_mq_send	master.c	/^void handle_mq_send()$/;"	f
+handle_mq_send	master.h	/^void handle_mq_send();$/;"	p	signature:()
+handle_pipe	master.c	/^int handle_pipe(fd)$/;"	f
+handle_pipe	master.h	/^int handle_pipe(int fd);$/;"	p	signature:(int fd)
+handle_read	net_util.c	/^int handle_read(int fd)$/;"	f	signature:(int fd)
+handle_read	net_util.h	/^int handle_read(int fd);$/;"	p	signature:(int fd)
+handle_readlist	net_util.c	/^int handle_readlist(int ismaster)$/;"	f	signature:(int ismaster)
+handle_readlist	net_util.h	/^int handle_readlist(int ismaster);$/;"	p	signature:(int ismaster)
+handle_sigchld	master.c	/^void handle_sigchld(int signo) $/;"	f	signature:(int signo)
+handle_signal	master.c	/^int handle_signal()$/;"	f
+handle_signal	master.h	/^int handle_signal();$/;"	p	signature:()
+handle_term	master.c	/^void handle_term(int signo)$/;"	f	signature:(int signo)
+handle_timer	outer.h	/^		void	(*handle_timer)(); $/;"	m	struct:ServInterface	access:public
+handle_timer	test_meserv/test_serv.cpp	/^OUTER_FUNC void handle_timer()$/;"	f	signature:()
+head	mem_queue.h	/^	volatile int head;		\/\/头部	$/;"	m	struct:mem_head	access:public
+id	net_util.h	/^	uint8_t id;			 \/\/子进程编号 从0开始 依次命名$/;"	m	struct:work	access:public
+idx	net_util.h	/^	int idx; \/\/epinfo->fds index$/;"	m	struct:fd_wrap	access:public
+init_fds	fds.c	/^int	init_fds()$/;"	f
+init_fds	fds.h	/^int	init_fds();$/;"	p	signature:()
+init_rlimit	util.c	/^int init_rlimit()$/;"	f
+init_rlimit	util.h	/^inline int init_rlimit();$/;"	p	signature:()
+init_setting	master.c	/^int init_setting()$/;"	f
+init_setting	master.h	/^int init_setting();$/;"	p	signature:()
+ip	fds.h	/^	int ip;$/;"	m	struct:fdsess	access:public
+ip	net_util.h	/^	uint32_t ip;$/;"	m	struct:fd_addr	access:public
+len	mem_queue.h	/^	int len;				\/\/总长$/;"	m	struct:mem_queue	access:public
+len	mem_queue.h	/^	int len;				\/\/长度$/;"	m	struct:mem_block	access:public
+likely	util.h	19;"	d
+log_dir	net_util.h	/^	char log_dir[32];	\/\/日志目录$/;"	m	struct:svr_setting	access:public
+log_file	global.c	/^char log_file[64] = "log\/temp.log";$/;"	v
+log_file	global.h	/^extern char log_file[64];$/;"	x
+log_level	net_util.h	/^	uint8_t log_level;  \/\/日志级别$/;"	m	struct:svr_setting	access:public
+log_maxfiles	net_util.h	/^	uint32_t log_maxfiles; \/\/最大日志文件个数$/;"	m	struct:svr_setting	access:public
+log_size	net_util.h	/^	uint32_t log_size;	\/\/日志个数$/;"	m	struct:svr_setting	access:public
+main	me_serv.c	/^int main(int argc, char* argv[]) $/;"	f	signature:(int argc, char* argv[])
+master_dispatch	master.c	/^int master_dispatch()$/;"	f
+master_dispatch	master.h	/^int master_dispatch();$/;"	p	signature:()
+master_fini	master.c	/^int master_fini()$/;"	f
+master_fini	master.h	/^int master_fini();$/;"	p	signature:()
+master_init	master.c	/^int master_init()$/;"	f
+master_init	master.h	/^int master_init();$/;"	p	signature:()
+master_listen	master.c	/^int master_listen()$/;"	f
+master_listen	master.h	/^int master_listen();$/;"	p	signature:()
+master_recv_pipe_create	master.c	/^int master_recv_pipe_create(int i) $/;"	f	signature:(int i)
+master_recv_pipe_create	master.h	/^int master_recv_pipe_create(int i); $/;"	p	signature:(int i)
+max_buf_len	net_util.h	/^	int max_buf_len;	\/\/发送(接收)缓冲区最大长度 超过报错$/;"	m	struct:svr_setting	access:public
+max_msg_len	net_util.h	/^	int max_msg_len;	\/\/ 最大消息长度$/;"	m	struct:svr_setting	access:public
+maxev	net_util.h	/^	int maxev;$/;"	m	struct:epoll_info	access:public
+maxfd	net_util.h	/^	int maxfd;$/;"	m	struct:epoll_info	access:public
+mcast_msg_len	net_util.h	/^	int mcast_msg_len;  \/\/组播包长$/;"	m	struct:svr_setting	access:public
+mem_block	master.h	/^struct mem_block;$/;"	x
+mem_block	mem_queue.h	/^typedef struct mem_block {$/;"	s
+mem_block::data	mem_queue.h	/^	char data[];			\/\/数据$/;"	m	struct:mem_block	access:public
+mem_block::fd	mem_queue.h	/^	int fd;					\/\/fd$/;"	m	struct:mem_block	access:public
+mem_block::len	mem_queue.h	/^	int len;				\/\/长度$/;"	m	struct:mem_block	access:public
+mem_block::type	mem_queue.h	/^	uint8_t type;			\/\/类型$/;"	m	struct:mem_block	access:public
+mem_block_t	mem_queue.h	/^} __attribute__((packed)) mem_block_t;$/;"	t	typeref:struct:mem_block
+mem_head	mem_queue.h	/^typedef struct mem_head {$/;"	s
+mem_head::blk_cnt	mem_queue.h	/^	volatile int blk_cnt;	\/\/总共块数  正确$/;"	m	struct:mem_head	access:public
+mem_head::head	mem_queue.h	/^	volatile int head;		\/\/头部	$/;"	m	struct:mem_head	access:public
+mem_head::tail	mem_queue.h	/^	volatile int tail;		\/\/尾部$/;"	m	struct:mem_head	access:public
+mem_head_len	mem_queue.c	/^const int mem_head_len = sizeof(mem_head_t);$/;"	v
+mem_head_len	mem_queue.h	/^extern const int mem_head_len;$/;"	x
+mem_head_t	mem_queue.h	/^} __attribute__((packed)) mem_head_t;$/;"	t	typeref:struct:mem_head
+mem_queue	mem_queue.h	/^typedef struct mem_queue {$/;"	s
+mem_queue::len	mem_queue.h	/^	int len;				\/\/总长$/;"	m	struct:mem_queue	access:public
+mem_queue::ptr	mem_queue.h	/^	mem_head_t *ptr;$/;"	m	struct:mem_queue	access:public
+mem_queue::sem	mem_queue.h	/^	sem_t *sem;				\/\/信号量$/;"	m	struct:mem_queue	access:public
+mem_queue::type	mem_queue.h	/^	int8_t type;			\/\/类型$/;"	m	struct:mem_queue	access:public
+mem_queue_len	net_util.h	/^	int mem_queue_len;	\/\/ 共享内存队列长度$/;"	m	struct:svr_setting	access:public
+mem_queue_t	mem_queue.h	/^} __attribute__((packed)) mem_queue_t;$/;"	t	typeref:struct:mem_queue
+mod_fd_to_epinfo	net_util.c	/^int mod_fd_to_epinfo(int epfd, int fd, int events)$/;"	f	signature:(int epfd, int fd, int events)
+mod_fd_to_epinfo	net_util.h	/^int mod_fd_to_epinfo(int epfd, int fd, int events);$/;"	p	signature:(int epfd, int fd, int events)
+mod_pfd_to_epinfo	net_util.c	/^int mod_pfd_to_epinfo(int epfd, void *pfd, int events)$/;"	f	signature:(int epfd, void *pfd, int events)
+mod_pfd_to_epinfo	net_util.h	/^int mod_pfd_to_epinfo(int epfd, void *pfd, int events);$/;"	p	signature:(int epfd, void *pfd, int events)
+mq_display	mem_queue.c	/^void mq_display(mem_queue_t *q)$/;"	f	signature:(mem_queue_t *q)
+mq_display	mem_queue.h	/^void mq_display(mem_queue_t *q);$/;"	p	signature:(mem_queue_t *q)
+mq_fini	mem_queue.c	/^int mq_fini(mem_queue_t *q, int size, const char* semname)$/;"	f	signature:(mem_queue_t *q, int size, const char* semname)
+mq_fini	mem_queue.h	/^int mq_fini(mem_queue_t *q, int size, const char* semname);$/;"	p	signature:(mem_queue_t *q, int size, const char* semname)
+mq_init	mem_queue.c	/^int mq_init(mem_queue_t *q, int size, int type, const char* semname)$/;"	f	signature:(mem_queue_t *q, int size, int type, const char* semname)
+mq_init	mem_queue.h	/^int mq_init(mem_queue_t *q, int size, int type, const char* semname);$/;"	p	signature:(mem_queue_t *q, int size, int type, const char* semname)
+mq_pop	mem_queue.c	/^mem_block_t *mq_pop(mem_queue_t *q)$/;"	f	signature:(mem_queue_t *q)
+mq_pop	mem_queue.h	/^mem_block_t* mq_pop(mem_queue_t *q);$/;"	p	signature:(mem_queue_t *q)
+mq_push	mem_queue.c	/^int mq_push(mem_queue_t *q, const mem_block_t *b, const void *data, int pipefd)$/;"	f	signature:(mem_queue_t *q, const mem_block_t *b, const void *data, int pipefd)
+mq_push	mem_queue.h	/^int mq_push(mem_queue_t *q, const mem_block_t *b, const void *data, int pipefd);$/;"	p	signature:(mem_queue_t *q, const mem_block_t *b, const void *data, int pipefd)
+msg_queue	net_util.h	/^typedef struct msg_queue {$/;"	s
+msg_queue::rq	net_util.h	/^	mem_queue_t rq;			\/\/接收队列$/;"	m	struct:msg_queue	access:public
+msg_queue::send_pipefd	net_util.h	/^	int send_pipefd[2];		\/\/消息发送通知管道 多个子进程共享管道$/;"	m	struct:msg_queue	access:public
+msg_queue::sq	net_util.h	/^	mem_queue_t sq;			\/\/发送队列$/;"	m	struct:msg_queue	access:public
+msg_queue_t	net_util.h	/^} __attribute__((packed)) msg_queue_t;$/;"	t	typeref:struct:msg_queue
+msg_size	net_util.h	/^	uint32_t msg_size;		\/\/已收到消息个数$/;"	m	struct:epoll_info	access:public
+msglen	net_util.h	/^	int msglen;			\/\/消息长度$/;"	m	struct:fd_buff	access:public
+msgq	net_util.h	/^	msg_queue_t msgq;		\/\/读写消息队列$/;"	m	struct:epoll_info	access:public
+node	net_util.h	/^	list_head_t node;   \/\/在可读或者关闭链表的位置$/;"	m	struct:fd_wrap	access:public
+nr_max_event	net_util.h	/^	int nr_max_event;	\/\/ 最大的事件类型 epoll_create ms不需要这个参数了$/;"	m	struct:svr_setting	access:public
+nr_max_fd	net_util.h	/^	int nr_max_fd;		\/\/ fd max num$/;"	m	struct:svr_setting	access:public
+nr_work	net_util.h	/^	int nr_work;$/;"	m	struct:work_mgr	access:public
+on_cli_closed	outer.h	/^		void	(*on_cli_closed)(int fd);$/;"	m	struct:ServInterface	access:public
+on_cli_closed	test_meserv/test_serv.cpp	/^OUTER_FUNC int on_cli_closed(int fd) $/;"	f	signature:(int fd)
+on_serv_closed	outer.h	/^		void	(*on_serv_closed)(int fd);$/;"	m	struct:ServInterface	access:public
+on_serv_closed	test_meserv/test_serv.cpp	/^OUTER_FUNC int on_serv_closed(int fd)$/;"	f	signature:(int fd)
+port	fds.h	/^	int port;$/;"	m	struct:fdsess	access:public
+port	net_util.h	/^	uint16_t port;$/;"	m	struct:fd_addr	access:public
+print_args	util.c	/^void print_args()$/;"	f
+print_args	util.h	/^void print_args();$/;"	p	signature:()
+print_env	util.c	/^void  print_env() $/;"	f
+print_env	util.h	/^void print_env();$/;"	p	signature:()
+proc_cli_msg	outer.h	/^		int		(*proc_cli_msg)(void* msg, int len, int fd);$/;"	m	struct:ServInterface	access:public
+proc_cli_msg	test_meserv/test_serv.cpp	/^OUTER_FUNC int proc_cli_msg(void *msg, int len, int fd)$/;"	f	signature:(void *msg, int len, int fd)
+proc_serv_msg	outer.h	/^		void	(*proc_serv_msg)(int fd, void* msg, int len);$/;"	m	struct:ServInterface	access:public
+proc_serv_msg	test_meserv/test_serv.cpp	/^OUTER_FUNC int proc_serv_msg(int fd, void *msg, int len)$/;"	f	signature:(int fd, void *msg, int len)
+ptr	mem_queue.h	/^	mem_head_t *ptr;$/;"	m	struct:mem_queue	access:public
+raw2blk	master.c	/^void raw2blk(int fd, mem_block_t *blk)$/;"	f	signature:(int fd, mem_block_t *blk)
+raw2blk	master.h	/^void raw2blk(int fd, struct mem_block *blk);$/;"	p	signature:(int fd, struct mem_block *blk)
+raw_buf_len	net_util.h	/^	int raw_buf_len;	\/\/socket buf 长度$/;"	m	struct:svr_setting	access:public
+rbf	net_util.h	/^	char *rbf;			\/\/接收缓冲区$/;"	m	struct:fd_buff	access:public
+readlist	net_util.h	/^	list_head_t readlist;   \/\/待读取链表$/;"	m	struct:epoll_info	access:public
+recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个$/;"	m	struct:work	access:public
+recv_semname	net_util.h	/^	char recv_semname[32];	\/\/接收队列信号量$/;"	m	struct:svr_setting	access:public
+reg_data_so	outer.c	/^int reg_data_so(const char* name)$/;"	f	signature:(const char* name)
+reg_data_so	outer.h	/^	int  reg_data_so(const char* name);$/;"	p	signature:(const char* name)
+reg_so	outer.c	/^int reg_so(const char* name, int flag)$/;"	f	signature:(const char* name, int flag)
+reg_so	outer.h	/^	int  reg_so(const char* name, int flag);$/;"	p	signature:(const char* name, int flag)
+remove_fd	fds.c	/^void remove_fd(int fd)$/;"	f	signature:(int fd)
+remove_fd	fds.h	/^void remove_fd(int fd);$/;"	p	signature:(int fd)
+rlen	net_util.h	/^	int rlen;		\/\/接收缓冲区长度$/;"	m	struct:fd_buff	access:public
+rq	net_util.h	/^	mem_queue_t rq;			\/\/接收队列$/;"	m	struct:msg_queue	access:public
+safe_socket_listen	net_util.c	/^int safe_socket_listen(const char* ipaddr, in_port_t port, int type, int backlog, int bufsize)$/;"	f	signature:(const char* ipaddr, in_port_t port, int type, int backlog, int bufsize)
+safe_socket_listen	net_util.h	/^int safe_socket_listen(const char* ipaddr, in_port_t port, int type, int backlog, int bufsize);$/;"	p	signature:(const char* ipaddr, in_port_t port, int type, int backlog, int bufsize)
+safe_tcp_accept	net_util.c	/^int safe_tcp_accept(int sockfd, struct sockaddr_in* peer, int nonblock)$/;"	f	signature:(int sockfd, struct sockaddr_in* peer, int nonblock)
+safe_tcp_accept	net_util.h	/^int safe_tcp_accept(int sockfd, struct sockaddr_in* peer, int nonblock);$/;"	p	signature:(int sockfd, struct sockaddr_in* peer, int nonblock)
+safe_tcp_connect	net_util.c	/^int safe_tcp_connect(const char* ipaddr, in_port_t port, int bufsize, int timeout)$/;"	f	signature:(const char* ipaddr, in_port_t port, int bufsize, int timeout)
+safe_tcp_connect	net_util.h	/^int safe_tcp_connect(const char* ipaddr, in_port_t port, int bufsize, int timeout);$/;"	p	signature:(const char* ipaddr, in_port_t port, int bufsize, int timeout)
+safe_tcp_recv_n	net_util.c	/^int safe_tcp_recv_n(int sockfd, void* buf, int total)$/;"	f	signature:(int sockfd, void* buf, int total)
+safe_tcp_recv_n	net_util.h	/^int safe_tcp_recv_n(int sockfd, void* buf, int total);$/;"	p	signature:(int sockfd, void* buf, int total)
+safe_tcp_send_n	net_util.c	/^int safe_tcp_send_n(int sockfd, const void* buf, int total)$/;"	f	signature:(int sockfd, const void* buf, int total)
+safe_tcp_send_n	net_util.h	/^int safe_tcp_send_n(int sockfd, const void* buf, int total);$/;"	p	signature:(int sockfd, const void* buf, int total)
+save_args	util.c	/^int save_args(int argc, char* argv[])$/;"	f	signature:(int argc, char* argv[])
+save_args	util.h	/^int save_args(int argc, char* argv[]);$/;"	p	signature:(int argc, char* argv[])
+save_fd	fds.c	/^void save_fd(fdsess_t *sess)$/;"	f	signature:(fdsess_t *sess)
+save_fd	fds.h	/^void save_fd(fdsess_t *fdsess);$/;"	p	signature:(fdsess_t *fdsess)
+sbf	net_util.h	/^	char *sbf;			\/\/发送缓冲区$/;"	m	struct:fd_buff	access:public
+sbf_size	net_util.h	/^	int sbf_size;		\/\/大小$/;"	m	struct:fd_buff	access:public
+sem	mem_queue.h	/^	sem_t *sem;				\/\/信号量$/;"	m	struct:mem_queue	access:public
+send_pipefd	net_util.h	/^	int send_pipefd[2];		\/\/消息发送通知管道 多个子进程共享管道$/;"	m	struct:msg_queue	access:public
+send_semname	net_util.h	/^	char send_semname[32];	\/\/发送队列信号量$/;"	m	struct:svr_setting	access:public
+send_to_cli	net_util.c	/^int send_to_cli(int fd, const void *msg, int const len)$/;"	f	signature:(int fd, const void *msg, int const len)
+send_to_cli	net_util.h	/^int send_to_cli(int fd, const void *msg, int const len);$/;"	p	signature:(int fd, const void *msg, int const len)
+send_to_serv	net_util.c	/^int send_to_serv(int fd, void *msg, int len)$/;"	f	signature:(int fd, void *msg, int len)
+send_to_serv	net_util.h	/^int send_to_serv(int fd, void *msg, int len);$/;"	p	signature:(int fd, void *msg, int len)
+seq	net_util.h	/^	uint32_t seq; $/;"	m	struct:epoll_info	access:public
+serv_fini	outer.h	/^		int 	(*serv_fini)(int ismaster);$/;"	m	struct:ServInterface	access:public
+serv_fini	test_meserv/test_serv.cpp	/^OUTER_FUNC int serv_fini(int ismaster) $/;"	f	signature:(int ismaster)
+serv_if_t	outer.h	/^	} serv_if_t;$/;"	t	typeref:struct:ServInterface
+serv_init	outer.h	/^		int 	(*serv_init)(int ismaster);$/;"	m	struct:ServInterface	access:public
+serv_init	test_meserv/test_serv.cpp	/^OUTER_FUNC int serv_init(int ismaster) $/;"	f	signature:(int ismaster)
+set_io_nonblock	util.c	/^int set_io_nonblock(int fd, int nonblock)$/;"	f	signature:(int fd, int nonblock)
+set_io_nonblock	util.h	/^int set_io_nonblock(int fd, int nonblock);$/;"	p	signature:(int fd, int nonblock)
+set_sock_rcv_timeo	net_util.c	/^int set_sock_rcv_timeo(int sockfd, int millisec)$/;"	f	signature:(int sockfd, int millisec)
+set_sock_rcv_timeo	net_util.h	/^int set_sock_rcv_timeo(int sockfd, int millisec);$/;"	p	signature:(int sockfd, int millisec)
+set_sock_snd_timeo	net_util.c	/^int set_sock_snd_timeo(int sockfd, int millisec)$/;"	f	signature:(int sockfd, int millisec)
+set_sock_snd_timmo	net_util.h	/^int set_sock_snd_timmo(int sockfd, int millisec);$/;"	p	signature:(int sockfd, int millisec)
+setting	global.c	/^svr_setting_t setting;$/;"	v
+setting	global.h	/^extern struct svr_setting  setting;$/;"	x
+setting	mem_queue.c	/^extern struct svr_setting setting;$/;"	x
+slen	net_util.h	/^	int slen;		\/\/发送缓冲长度$/;"	m	struct:fd_buff	access:public
+so	outer.c	/^serv_if_t so;$/;"	v
+so	outer.h	/^	extern serv_if_t so;$/;"	x
+sq	net_util.h	/^	mem_queue_t sq;			\/\/发送队列$/;"	m	struct:msg_queue	access:public
+srv_name	net_util.h	/^	char srv_name[32];	\/\/服务器名字$/;"	m	struct:svr_setting	access:public
+stop	global.c	/^int stop;$/;"	v
+stop	global.h	/^extern int stop;$/;"	x
+svr_setting	global.h	/^struct svr_setting;$/;"	x
+svr_setting	net_util.h	/^typedef struct svr_setting {$/;"	s
+svr_setting::bind_ip	net_util.h	/^	char bind_ip[17];	\/\/ip$/;"	m	struct:svr_setting	access:public
+svr_setting::bind_port	net_util.h	/^	uint16_t bind_port; \/\/port$/;"	m	struct:svr_setting	access:public
+svr_setting::data_so	net_util.h	/^	char data_so[32];	\/\/data_so;$/;"	m	struct:svr_setting	access:public
+svr_setting::log_dir	net_util.h	/^	char log_dir[32];	\/\/日志目录$/;"	m	struct:svr_setting	access:public
+svr_setting::log_level	net_util.h	/^	uint8_t log_level;  \/\/日志级别$/;"	m	struct:svr_setting	access:public
+svr_setting::log_maxfiles	net_util.h	/^	uint32_t log_maxfiles; \/\/最大日志文件个数$/;"	m	struct:svr_setting	access:public
+svr_setting::log_size	net_util.h	/^	uint32_t log_size;	\/\/日志个数$/;"	m	struct:svr_setting	access:public
+svr_setting::max_buf_len	net_util.h	/^	int max_buf_len;	\/\/发送(接收)缓冲区最大长度 超过报错$/;"	m	struct:svr_setting	access:public
+svr_setting::max_msg_len	net_util.h	/^	int max_msg_len;	\/\/ 最大消息长度$/;"	m	struct:svr_setting	access:public
+svr_setting::mcast_msg_len	net_util.h	/^	int mcast_msg_len;  \/\/组播包长$/;"	m	struct:svr_setting	access:public
+svr_setting::mem_queue_len	net_util.h	/^	int mem_queue_len;	\/\/ 共享内存队列长度$/;"	m	struct:svr_setting	access:public
+svr_setting::nr_max_event	net_util.h	/^	int nr_max_event;	\/\/ 最大的事件类型 epoll_create ms不需要这个参数了$/;"	m	struct:svr_setting	access:public
+svr_setting::nr_max_fd	net_util.h	/^	int nr_max_fd;		\/\/ fd max num$/;"	m	struct:svr_setting	access:public
+svr_setting::raw_buf_len	net_util.h	/^	int raw_buf_len;	\/\/socket buf 长度$/;"	m	struct:svr_setting	access:public
+svr_setting::recv_semname	net_util.h	/^	char recv_semname[32];	\/\/接收队列信号量$/;"	m	struct:svr_setting	access:public
+svr_setting::send_semname	net_util.h	/^	char send_semname[32];	\/\/发送队列信号量$/;"	m	struct:svr_setting	access:public
+svr_setting::srv_name	net_util.h	/^	char srv_name[32];	\/\/服务器名字$/;"	m	struct:svr_setting	access:public
+svr_setting::text_so	net_util.h	/^	char text_so[32];	\/\/text_so$/;"	m	struct:svr_setting	access:public
+svr_setting::worknum	net_util.h	/^	uint8_t worknum;	\/\/工作进程个数$/;"	m	struct:svr_setting	access:public
+svr_setting_t	net_util.h	/^} svr_setting_t;$/;"	t	typeref:struct:svr_setting
+tail	mem_queue.h	/^	volatile int tail;		\/\/尾部$/;"	m	struct:mem_head	access:public
+text_so	net_util.h	/^	char text_so[32];	\/\/text_so$/;"	m	struct:svr_setting	access:public
+type	mem_queue.h	/^	int8_t type;			\/\/类型$/;"	m	struct:mem_queue	access:public
+type	mem_queue.h	/^	uint8_t type;			\/\/类型$/;"	m	struct:mem_block	access:public
+type	net_util.h	/^	uint8_t type;$/;"	m	struct:fd_wrap	access:public
+unlikely	util.h	20;"	d
+unreg_data_so	outer.c	/^void unreg_data_so()$/;"	f
+unreg_data_so	outer.h	/^	void unreg_data_so();$/;"	p	signature:()
+unreg_so	outer.c	/^void unreg_so()$/;"	f
+unreg_so	outer.h	/^	void unreg_so();$/;"	p	signature:()
+work	net_util.h	/^typedef struct work {$/;"	s
+work::id	net_util.h	/^	uint8_t id;			 \/\/子进程编号 从0开始 依次命名$/;"	m	struct:work	access:public
+work::recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个$/;"	m	struct:work	access:public
+work_dispatch	work.c	/^int work_dispatch(int i)$/;"	f	signature:(int i)
+work_dispatch	work.h	/^int work_dispatch(int i);$/;"	p	signature:(int i)
+work_fini	work.c	/^int work_fini(int i)$/;"	f	signature:(int i)
+work_fini	work.h	/^int work_fini(int i);$/;"	p	signature:(int i)
+work_init	work.c	/^int work_init(int i)$/;"	f	signature:(int i)
+work_init	work.h	/^int work_init(int i);$/;"	p	signature:(int i)
+work_mgr	global.h	/^struct work_mgr;$/;"	x
+work_mgr	net_util.h	/^typedef struct work_mgr {$/;"	s
+work_mgr::nr_work	net_util.h	/^	int nr_work;$/;"	m	struct:work_mgr	access:public
+work_mgr::works	net_util.h	/^	work_t *works; \/\/配置项$/;"	m	struct:work_mgr	access:public
+work_mgr_t	net_util.h	/^} __attribute__((packed)) work_mgr_t;$/;"	t	typeref:struct:work_mgr
+work_t	net_util.h	/^}__attribute__((packed)) work_t;$/;"	t	typeref:struct:work
+workmgr	global.c	/^work_mgr_t  workmgr;$/;"	v
+workmgr	global.h	/^extern struct work_mgr workmgr;$/;"	x
+worknum	net_util.h	/^	uint8_t worknum;	\/\/工作进程个数$/;"	m	struct:svr_setting	access:public
+works	net_util.h	/^	work_t *works; \/\/配置项$/;"	m	struct:work_mgr	access:public
