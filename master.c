@@ -478,8 +478,10 @@ void handle_sigchld(int signo)
 				break;
 			}
 		}
-
-		start_work(i);
+		
+		if (i != workmgr.nr_work) {
+			start_work(i);
+		}
 	}
 }
 
