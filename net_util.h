@@ -96,6 +96,7 @@ typedef struct fd_wrap {
  */
 typedef struct epoll_info {
 	int epfd;
+	int listenfd;
 	struct epoll_event *evs;
 	fd_wrap_t *fds;
 	int maxfd;
@@ -240,5 +241,9 @@ int handle_closelist(int ismaster);
 /* @brief 增加fd到epinfo
  */
 int add_fdinfo_to_epinfo(int fd, int idx, int type, int ip, uint16_t port);
+
+/* @brief 删除fd
+ */
+int rm_fd_from_epinfo(int epfd, int fd);
 
 #endif

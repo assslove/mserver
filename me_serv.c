@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 			ERROR(0, "create work fail[%d][%s]", i, strerror(errno));
 			goto fail;	
 		} else if (pid == 0) { //child
-			int ret = work_init(i); //初始化子进程
+			int ret = work_init(i, 0); //初始化子进程
 			if (ret == -1) {
 				ERROR(0, "err work init [%s]", strerror(errno));
 				exit(0);

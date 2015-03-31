@@ -124,6 +124,8 @@ int master_listen()
 	if ((ret = add_fdinfo_to_epinfo(listenfd, 0, fd_type_listen, inet_addr(setting.bind_ip), setting.bind_port)) == -1) {
 		return -1;
 	}
+
+	epinfo.listenfd = listenfd;
 	int i = 0;
 	for (; i < setting.worknum; ++i) {
 		close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
@@ -227,7 +229,6 @@ int master_fini()
 
 	mq_fini(&(epinfo.msgq.rq), setting.mem_queue_len, setting.recv_semname);
 	mq_fini(&(epinfo.msgq.sq), setting.mem_queue_len, setting.send_semname);
-	close(epinfo.msgq.send_pipefd[0]);
 
 	int i = 0;
 	for (; i < workmgr.nr_work; ++i) { //关闭管道
@@ -428,8 +429,13 @@ void raw2blk(int fd, mem_block_t *blk)
 
 void start_work(int i)
 {
+	//关闭父进程的资源
+	rm_fd_from_epinfo(epinfo.epfd, workmgr.works[i].send_pipefd[0]);	
+	//关闭自己的管道
 	int pid;
 	close(workmgr.works[i].recv_pipefd[1]);
+	close(workmgr.works[i].send_pipefd[0]);
+
 	master_recv_pipe_create(i);
 	if (i != workmgr.nr_work) { //重启子进程
 		work_t *work = &workmgr.works[i];
@@ -438,7 +444,7 @@ void start_work(int i)
 			ERROR(0, "serv [%d] restart failed", work->id);
 			return ;
 		} else if (pid == 0) { //child
-			int ret = work_init(i);
+			int ret = work_init(i, 1);
 			if (ret == -1) {
 				ERROR(0, "err work init [%s]", strerror(errno));
 				exit(0);
@@ -449,6 +455,12 @@ void start_work(int i)
 		} else { //parent
 			chl_pids[i] = pid;
 			close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
+			close(workmgr.works[i].send_pipefd[1]); //
+			
+			if ((add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], MAX_WORKS, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
+				return ;
+			} 
+
 			INFO(0, "serv [%d] restart success", work->id);
 		}
 	}
@@ -465,7 +477,7 @@ void handle_sigchld(int signo)
 				break;
 			}
 		}
-		
+
 		if (i != workmgr.nr_work) {
 			start_work(i);
 		}

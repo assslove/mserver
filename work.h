@@ -4,7 +4,7 @@
 
 /* @brief
  */
-int work_init(int i);
+int work_init(int i, int isreboot);
 
 /* @brief 
  */

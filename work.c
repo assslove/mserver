@@ -31,11 +31,20 @@
 #include "fds.h"
 #include "mem_queue.h"
 
-int work_init(int i)
+int work_init(int i, int isreboot)
 {
 	log_fini();
 	char buf[10] = {'\0'};
 	sprintf(buf, "%d", i + 1);
+
+	int idx = 0;
+	for (idx = 0; idx <= epinfo.maxfd; ++idx) { //关闭监听的fd
+		if (epinfo.fds[idx].fd > 0) {
+			close(epinfo.fds[idx].fd);
+			INFO(0, "%s close fd=%d", __func__, epinfo.fds[idx].fd);
+		}
+	}
+
 	//log init
 	if (log_init(setting.log_dir, setting.log_level, setting.log_size, setting.log_maxfiles, buf) == -1) {
 		fprintf(stderr, "init log failed\n");
@@ -46,6 +55,8 @@ int work_init(int i)
 	//chg title
 	chg_proc_title("%s-WORK-%d", setting.srv_name, work->id);
 	//release master resource
+	if (epinfo.listenfd) close(epinfo.listenfd);
+	
 	free(epinfo.evs);
 	free(epinfo.fds);
 	close(epinfo.epfd);
@@ -75,28 +86,25 @@ int work_init(int i)
 		return -1;
 	} 
 
-	//close mem_queue pipe
-	close(epinfo.msgq.send_pipefd[0]); //关闭发送管道的读
-	//open(epinfo.msgq.send_pipefd[1], O_RDWR);
-	set_io_nonblock(epinfo.msgq.send_pipefd[1], 1);
-
 	int k = 0;
 	for (; k < workmgr.nr_work; k++) {
 		if (k == i) {
 			close(workmgr.works[k].recv_pipefd[1]); //关闭接收队列的写端
+			close(workmgr.works[k].send_pipefd[0]); //关闭发送队列的读端
 		} else { //其它都关闭
-			close(workmgr.works[k].recv_pipefd[0]);
+			if (!isreboot) {
+				close(workmgr.works[k].recv_pipefd[0]);
+				close(workmgr.works[k].send_pipefd[1]);
+			}
 			close(workmgr.works[k].recv_pipefd[1]);
+			close(workmgr.works[k].send_pipefd[0]);
 		}
 	}
-
-	//初始化fd-map
-//	init_fds();
 
 	stop = 0;
 	//清除chl_pids;
 	memset(chl_pids, 0, sizeof(chl_pids));
-	
+
 	//初始化子进程
 	if (so.serv_init && so.serv_init(0)) {
 		ERROR(0, "child serv init failed");
@@ -106,6 +114,7 @@ int work_init(int i)
 	INIT_LIST_HEAD(&epinfo.readlist);				
 	INIT_LIST_HEAD(&epinfo.closelist);				
 
+	work_index = i;
 	INFO(0, "child serv[id=%d] have started", workmgr.works[i].id);
 
 	return 0;
@@ -131,8 +140,8 @@ int work_dispatch(int i)
 			fd = epinfo.evs[k].data.fd;
 			//判断异常状态
 			//if (fd > epinfo.maxfd || epinfo.fds[fd].fd != fd) {
-				//ERROR(0, "child wait failed fd=%d", fd);
-				//continue;
+			//ERROR(0, "child wait failed fd=%d", fd);
+			//continue;
 			//}
 
 			if (epinfo.evs[k].events & EPOLLIN) {
@@ -193,7 +202,8 @@ int work_fini(int i)
 	free(epinfo.fds);
 	close(epinfo.epfd);
 
-	close(epinfo.msgq.send_pipefd[1]);
+	close(workmgr.works[i].send_pipefd[1]);
+	close(workmgr.works[i].recv_pipefd[0]);
 	
 	log_fini();
 	DEBUG(0, "work serv [id=%d] have stopped!", workmgr.works[i].id);

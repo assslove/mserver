@@ -276,7 +276,7 @@ int send_to_cli(int fd, const void *msg, int const len)
 	blk.type = BLK_DATA;
 	blk.len = len + blk_head_len;
 
-	if (mq_push(&epinfo.msgq.sq, &blk, msg, epinfo.msgq.send_pipefd[1]) == -1) {
+	if (mq_push(&epinfo.msgq.sq, &blk, msg, workmgr.works[work_index].send_pipefd[1]) == -1) {
 		ERROR(0, "%s error [len=%d]", __func__, len);
 		return -1;
 	}
@@ -623,3 +623,8 @@ int add_fdinfo_to_epinfo(int fd, int idx, int type, int ip, uint16_t port)
 	return 0;
 }
 
+
+int rm_fd_from_epinfo(int epfd, int fd)
+{
+	return epoll_ctl(epfd, EPOLL_CTL_DEL, fd, NULL);	
+}

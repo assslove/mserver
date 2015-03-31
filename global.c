@@ -46,3 +46,5 @@ svr_setting_t setting;
 GHashTable *fds;
 //stop flag
 int stop;
+//子进程indx
+int work_index;
