@@ -96,7 +96,6 @@ typedef struct fd_wrap {
  */
 typedef struct epoll_info {
 	int epfd;
-	int listenfd;
 	struct epoll_event *evs;
 	fd_wrap_t *fds;
 	int maxfd;

@@ -41,7 +41,7 @@ int work_init(int i, int isreboot)
 	for (idx = 0; idx <= epinfo.maxfd; ++idx) { //关闭监听的fd
 		if (epinfo.fds[idx].fd > 0) {
 			close(epinfo.fds[idx].fd);
-			INFO(0, "%s close fd=%d", __func__, epinfo.fds[idx].fd);
+//			INFO(0, "%s close fd=%d", __func__, epinfo.fds[idx].fd);
 		}
 	}
 
@@ -54,8 +54,6 @@ int work_init(int i, int isreboot)
 	work_t *work = &workmgr.works[i];
 	//chg title
 	chg_proc_title("%s-WORK-%d", setting.srv_name, work->id);
-	//release master resource
-	if (epinfo.listenfd) close(epinfo.listenfd);
 	
 	free(epinfo.evs);
 	free(epinfo.fds);
@@ -97,7 +95,7 @@ int work_init(int i, int isreboot)
 				close(workmgr.works[k].send_pipefd[1]);
 			}
 			close(workmgr.works[k].recv_pipefd[1]);
-			close(workmgr.works[k].send_pipefd[0]);
+			//close(workmgr.works[k].send_pipefd[0]);
 		}
 	}
 

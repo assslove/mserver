@@ -104,7 +104,7 @@ int master_init()
 	int i = 0;
 	for (; i < workmgr.nr_work; ++i) {
 		master_recv_pipe_create(i);  //初始化发送队列通知管道
-		if ((ret = add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], MAX_WORKS, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
+		if ((ret = add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], i, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
 			return -1;
 		} 
 	}
@@ -125,7 +125,6 @@ int master_listen()
 		return -1;
 	}
 
-	epinfo.listenfd = listenfd;
 	int i = 0;
 	for (; i < setting.worknum; ++i) {
 		close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
@@ -457,7 +456,7 @@ void start_work(int i)
 			close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
 			close(workmgr.works[i].send_pipefd[1]); //
 			
-			if ((add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], MAX_WORKS, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
+			if ((add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], i, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
 				return ;
 			} 
 
