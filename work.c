@@ -61,7 +61,7 @@ int work_init(int i, int isreboot)
 	
 	//子进程epinfo主要用于接收父进程的管道通知
 	setting.nr_max_event = 20;
-	setting.nr_max_fd = 20;
+	setting.nr_max_fd = 100;
 	epinfo.epfd = epoll_create(setting.nr_max_event);
 	if (epinfo.epfd == -1) {
 		ERROR(0, "create epfd error: %s", strerror(errno));
@@ -74,7 +74,8 @@ int work_init(int i, int isreboot)
 		return -1;
 	}
 
-	epinfo.fds = (fd_wrap_t *)calloc(setting.nr_max_fd, sizeof(fd_wrap_t));		
+	int maxfd = workmgr.works[i].recv_pipefd[0];
+	epinfo.fds = (fd_wrap_t *)calloc(maxfd + 1, sizeof(fd_wrap_t));		
 	if (epinfo.fds == NULL) {
 		ERROR(0, "create epoll fds error: %s", strerror(errno));
 		return -1;
