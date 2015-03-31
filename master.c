@@ -532,8 +532,7 @@ void handle_hup(int fd)
 
 	ERROR(0, "fd have closed [fd=%d,servid=%d]", fd, workmgr.works[idx].id);
 
-	start_work(idx);
-
+	//start_work(idx);
 }
 
 void  handle_epipe(int signo)
