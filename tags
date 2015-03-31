@@ -11,7 +11,7 @@ BLK_OPEN	mem_queue.h	/^	BLK_OPEN	= 3,$/;"	e	enum:MEM_BLOCK_TYPE
 CACHE_CLOSE	net_util.h	/^	CACHE_CLOSE = 2$/;"	e	enum:CACHE_TYPE
 CACHE_READ	net_util.h	/^	CACHE_READ = 1, 	$/;"	e	enum:CACHE_TYPE
 CACHE_TYPE	net_util.h	/^enum CACHE_TYPE {$/;"	g
-CFLAGS	Makefile	/^CFLAGS =  -g -Wall -Wunused-function -rdynamic -lpthread -ldl -L\/usr\/local\/lib -lnanc$/;"	m
+CFLAGS	Makefile	/^CFLAGS =  -g -Wall -Wunused-function -rdynamic -lpthread -ldl -L\/usr\/local\/lib -lnanc -DENABLE_TRACE$/;"	m
 CONST_DEF	global.h	/^enum CONST_DEF {$/;"	g
 DLFUNC	outer.c	36;"	d	file:
 DLFUNC_NO_ERROR	outer.c	30;"	d	file:
@@ -21,7 +21,7 @@ GLOBAL_H_	global.h	2;"	d
 INSTALL_DIR	Makefile	/^INSTALL_DIR = \/usr\/local\/include\/meserv$/;"	m
 LIBS	Makefile	/^LIBS = `pkg-config --cflags --libs glib-2.0`$/;"	m
 MASTER_H_	master.h	2;"	d
-MAX_WORKS	global.h	/^	MAX_WORKS = 1024,  \/\/最大工作进程数$/;"	e	enum:CONST_DEF
+MAX_WORKS	global.h	/^	MAX_WORKS = 32,  \/\/最大工作进程数$/;"	e	enum:CONST_DEF
 MCAST_MSG_LEN	global.h	/^	MCAST_MSG_LEN = 4096, $/;"	e	enum:CONST_DEF
 MEM_BLOCK_TYPE	mem_queue.h	/^enum MEM_BLOCK_TYPE {$/;"	g
 MEM_QUEUE_H_	mem_queue.h	2;"	d
@@ -80,7 +80,7 @@ blk_tail	mem_queue.h	/^inline mem_block_t* blk_tail(mem_queue_t *q);$/;"	p	signa
 buff	net_util.h	/^	fd_buff_t buff; \/\/缓存$/;"	m	struct:fd_wrap	access:public
 chg_proc_title	util.c	/^int chg_proc_title(const char *fmt, ...) $/;"	f	signature:(const char *fmt, ...)
 chg_proc_title	util.h	/^int chg_proc_title(const char *fmt, ...);$/;"	p	signature:(const char *fmt, ...)
-chl_pids	global.c	/^int chl_pids[1024] = {0};$/;"	v
+chl_pids	global.c	/^int chl_pids[MAX_WORKS] = {0};$/;"	v
 chl_pids	global.h	/^extern int chl_pids[MAX_WORKS];$/;"	x
 close_cli	work.c	/^void close_cli(int fd)$/;"	f	signature:(int fd)
 close_cli	work.h	/^void close_cli(int fd);$/;"	p	signature:(int fd)
@@ -242,8 +242,6 @@ len	mem_queue.h	/^	int len;				\/\/总长$/;"	m	struct:mem_queue	access:public
 len	mem_queue.h	/^	int len;				\/\/长度$/;"	m	struct:mem_block	access:public
 likely	util.h	19;"	d
 log_dir	net_util.h	/^	char log_dir[32];	\/\/日志目录$/;"	m	struct:svr_setting	access:public
-log_file	global.c	/^char log_file[64] = "log\/temp.log";$/;"	v
-log_file	global.h	/^extern char log_file[64];$/;"	x
 log_level	net_util.h	/^	uint8_t log_level;  \/\/日志级别$/;"	m	struct:svr_setting	access:public
 log_maxfiles	net_util.h	/^	uint32_t log_maxfiles; \/\/最大日志文件个数$/;"	m	struct:svr_setting	access:public
 log_size	net_util.h	/^	uint32_t log_size;	\/\/日志个数$/;"	m	struct:svr_setting	access:public
@@ -330,7 +328,7 @@ raw2blk	master.h	/^void raw2blk(int fd, struct mem_block *blk);$/;"	p	signature:
 raw_buf_len	net_util.h	/^	int raw_buf_len;	\/\/socket buf 长度$/;"	m	struct:svr_setting	access:public
 rbf	net_util.h	/^	char *rbf;			\/\/接收缓冲区$/;"	m	struct:fd_buff	access:public
 readlist	net_util.h	/^	list_head_t readlist;   \/\/待读取链表$/;"	m	struct:epoll_info	access:public
-recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个$/;"	m	struct:work	access:public
+recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个 重启时候更新$/;"	m	struct:work	access:public
 recv_semname	net_util.h	/^	char recv_semname[32];	\/\/接收队列信号量$/;"	m	struct:svr_setting	access:public
 reg_data_so	outer.c	/^int reg_data_so(const char* name)$/;"	f	signature:(const char* name)
 reg_data_so	outer.h	/^	int  reg_data_so(const char* name);$/;"	p	signature:(const char* name)
@@ -383,6 +381,7 @@ so	outer.c	/^serv_if_t so;$/;"	v
 so	outer.h	/^	extern serv_if_t so;$/;"	x
 sq	net_util.h	/^	mem_queue_t sq;			\/\/发送队列$/;"	m	struct:msg_queue	access:public
 srv_name	net_util.h	/^	char srv_name[32];	\/\/服务器名字$/;"	m	struct:svr_setting	access:public
+start_work	master.c	/^void start_work(int i)$/;"	f	signature:(int i)
 stop	global.c	/^int stop;$/;"	v
 stop	global.h	/^extern int stop;$/;"	x
 svr_setting	global.h	/^struct svr_setting;$/;"	x
@@ -419,7 +418,7 @@ unreg_so	outer.c	/^void unreg_so()$/;"	f
 unreg_so	outer.h	/^	void unreg_so();$/;"	p	signature:()
 work	net_util.h	/^typedef struct work {$/;"	s
 work::id	net_util.h	/^	uint8_t id;			 \/\/子进程编号 从0开始 依次命名$/;"	m	struct:work	access:public
-work::recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个$/;"	m	struct:work	access:public
+work::recv_pipefd	net_util.h	/^	int recv_pipefd[2];  \/\/消息接收通知管道 每个子进程都拥有一个 重启时候更新$/;"	m	struct:work	access:public
 work_dispatch	work.c	/^int work_dispatch(int i)$/;"	f	signature:(int i)
 work_dispatch	work.h	/^int work_dispatch(int i);$/;"	p	signature:(int i)
 work_fini	work.c	/^int work_fini(int i)$/;"	f	signature:(int i)

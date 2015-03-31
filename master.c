@@ -516,7 +516,7 @@ void handle_term(int signo)
 		for (i = 0; i < workmgr.nr_work; i++) { //终止子进程
 			if (chl_pids[i]) {
 				chl_pids[i] = 0;
-				kill(chl_pids[i], signo);
+				kill(chl_pids[i], SIGKILL);
 			}
 		}
 	}
