@@ -19,8 +19,9 @@
 #include <errno.h>
 #include <sys/epoll.h>
 #include <malloc.h>
-
+#include <sys/types.h>
 #include <libnanc/log.h>
+#include <fcntl.h>
 
 #include "net_util.h"
 #include "util.h"
@@ -76,6 +77,7 @@ int work_init(int i)
 
 	//close mem_queue pipe
 	close(epinfo.msgq.send_pipefd[0]); //关闭发送管道的读
+	//open(epinfo.msgq.send_pipefd[1], O_RDWR);
 	set_io_nonblock(epinfo.msgq.send_pipefd[1], 1);
 
 	int k = 0;

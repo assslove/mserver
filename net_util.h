@@ -44,12 +44,12 @@ enum fd_type {
 typedef struct msg_queue {
 	mem_queue_t rq;			//接收队列
 	mem_queue_t sq;			//发送队列
-	int send_pipefd[2];		//消息发送通知管道 多个子进程共享管道
 } __attribute__((packed)) msg_queue_t;
 
 /* @brief 工作进程配置项
  */
 typedef struct work {
+	int send_pipefd[2];	 //消息发送通知管道 每个子进程都是一个发送通知管道
 	int recv_pipefd[2];  //消息接收通知管道 每个子进程都拥有一个 重启时候更新
 	uint8_t id;			 //子进程编号 从0开始 依次命名
 }__attribute__((packed)) work_t;

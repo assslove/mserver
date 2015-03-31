@@ -91,27 +91,22 @@ int master_init()
 		ERROR(0, "init wq fail");
 		return -1;
 	}
-
-	//初始化发送队列通知管道
-	pipe(msgq->send_pipefd);
-	if ((ret = add_fdinfo_to_epinfo(msgq->send_pipefd[0], MAX_WORKS, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
-		return -1;
-	} 
-
 	//初始化工作进程信息
 	workmgr.nr_work = setting.worknum;
 	workmgr.works = (work_t *)malloc(sizeof(work_t) * workmgr.nr_work);
-	
+
 	if (workmgr.works == NULL) {
 		ERROR(0, "malloc works failed");
 		return -1;
 	}
 
 	epinfo.msg_size = 0;
-
 	int i = 0;
 	for (; i < workmgr.nr_work; ++i) {
-		master_recv_pipe_create(i); //创建父进程通知子进程管道
+		master_recv_pipe_create(i);  //初始化发送队列通知管道
+		if ((ret = add_fdinfo_to_epinfo(workmgr.works[i].send_pipefd[0], MAX_WORKS, fd_type_pipe, 0, 0)) == -1) {  //用于接收子进程的读取
+			return -1;
+		} 
 	}
 
 	return 0;
@@ -129,11 +124,10 @@ int master_listen()
 	if ((ret = add_fdinfo_to_epinfo(listenfd, 0, fd_type_listen, inet_addr(setting.bind_ip), setting.bind_port)) == -1) {
 		return -1;
 	}
-	//close pipe
-	close(epinfo.msgq.send_pipefd[1]); //主进程发送管道关闭写 等待子进程写
 	int i = 0;
 	for (; i < setting.worknum; ++i) {
 		close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
+		close(workmgr.works[i].send_pipefd[1]); //发送管道关闭写 主要用于读，子进程通知父进程
 	}
 
 
@@ -153,8 +147,10 @@ int master_recv_pipe_create(int i)
 	work_t *work = &workmgr.works[i];
 	work->id = i; //编号从0开始
 	pipe(work->recv_pipefd);
+	pipe(work->send_pipefd);
 	//设置非阻塞
 	set_io_nonblock(work->recv_pipefd[1], 1);
+	set_io_nonblock(work->send_pipefd[0], 1);
 
 	return 0;
 }
@@ -237,6 +233,7 @@ int master_fini()
 	for (; i < workmgr.nr_work; ++i) { //关闭管道
 		work_t *work = &workmgr.works[i];
 		close(work->recv_pipefd[1]);
+		close(work->send_pipefd[0]);
 	}
 
 	for (i = 0; i < epinfo.maxfd; ++i) {
@@ -346,15 +343,6 @@ int do_fd_open(int fd)
 		}
 		
 		DEBUG(0, "recv listen [fd=%u]", fd);
-		//mem_block_t blk;
-		//blk.id = epinfo.fds[newfd].idx;
-		//blk.fd = newfd;
-		//blk.type = BLK_OPEN;
-		//blk.len = blk_head_len + sizeof(fd_addr_t);
-
-		//if ((mq_push(&workmgr.works[blk.id].rq, &blk, &epinfo.fds[newfd].addr)) == -1) {
-			//do_fd_close(fd, 2); //不需要通知客户端 
-		//}
 	}  
 
 	return newfd;
@@ -461,7 +449,6 @@ void start_work(int i)
 		} else { //parent
 			chl_pids[i] = pid;
 			close(workmgr.works[i].recv_pipefd[0]); //接收管道关闭读 主要用于写，通知子进程
-			usleep(200000);
 			INFO(0, "serv [%d] restart success", work->id);
 		}
 	}
